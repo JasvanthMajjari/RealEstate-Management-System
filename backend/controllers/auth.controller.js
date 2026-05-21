@@ -248,6 +248,15 @@ export const resetPassword = async (req, res) => {
     const { token } = req.params;
     const { password } = req.body;
 
+    if (!password || password.length < 6) {
+      return res.status(400).json({
+        success: false,
+        message: "Passsword must be atleast 6 characters",
+      });
+    }
+
+    const cleanToken = token.trim();
+
     const resetPasswordToken = crypto
       .createHash("sha256")
       .update(token)
@@ -260,14 +269,17 @@ export const resetPassword = async (req, res) => {
 
     if (!user) {
       return res.status(400).json({
+        success: false,
         message: "Invalid or expired password rest token",
       });
     }
+
     user.password = await bcrypt.hash(password, 10);
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
 
     await user.save();
+
     res.status(200).json({
       success: true,
       message: "Password updated successfully",

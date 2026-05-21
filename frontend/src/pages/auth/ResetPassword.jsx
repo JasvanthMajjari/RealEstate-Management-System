@@ -22,20 +22,24 @@ const ResetPassword = () => {
   //to submit the new password
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      return setError("Passwrod is not matched..");
-    }
-    setIsLoading(true);
+
     setError("");
     setSuccess("");
 
+    if (password !== confirmPassword) {
+      return setError("Passwrod is not matched..");
+    }
+    if (password.length < 6) {
+      setError("Password must be at least 6 characters.");
+    }
+    setIsLoading(true);
     try {
       const res = await api.post(
         `${API_URL}/api/auth/reset-password/${token}`,
         { password },
       );
 
-      if (res.data.success) {
+      if (res.data?.success) {
         setSuccess(
           "Password has been reset successfully! Redirecting to Login..",
         );
