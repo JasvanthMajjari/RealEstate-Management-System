@@ -545,11 +545,11 @@ const LandingPage = () => {
               <img src={logo} alt="logo" className={s.designLogo} />
               <span className="text-text-muted">Designed By</span>
               <a
-                href="https://hexagondigitalservices.com"
+                href="https://www.flaticon.com/free-icon/home-button_9073032?term=home&page=1&position=17&origin=search&related_id=9073032"
                 target="-blank"
                 className={s.designLink}
               >
-                Hexagon Digital Services
+                Flaticon
               </a>
             </div>
           </div>
