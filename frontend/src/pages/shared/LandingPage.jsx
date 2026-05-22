@@ -19,7 +19,7 @@ import banner from "../../assets/bannerimage.png";
 import PropertyCard from "../../components/common/PropertyCard.jsx";
 import { FaFacebookF, FaInstagram, FaLinkedin } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import logo from "../../assets/hexagonlogo1.png";
+import logo from "../../assets/home.png";
 import api from "../../utils/axios.js";
 
 const LandingPage = () => {
